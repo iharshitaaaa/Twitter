@@ -16,10 +16,11 @@ app.listen(PORT, async() => {
     //     content : 'Third tweet',
     // });
 
-    // const tweet = await tweetRepo.create({ content : 'Third tweet'});
+    // const tweet = await tweetRepo.create({ content : 'With hooks', userEmail : 'user@example.com' });
     // const comment = await Comment.create({ content: 'First comment'});
     // tweet.comments.push(comment);
     // await tweet.save();
-    const tweet = await tweetRepo.getAll(2, 0);
-    console.log(tweet[0].contentWithEmail);
+    // const tweet = await tweetRepo.getAll(2, 0);
+   
+    // console.log(tweet[0].content);
 });

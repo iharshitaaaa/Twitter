@@ -21,7 +21,12 @@ const tweetSchema = new mongoose.Schema({
 
 tweetSchema.virtual('contentWithEmail').get(function(){ // virtual of content with email
     return `${this.content} - ${this.userEmail}`;
-})
+});
+
+tweetSchema.pre('save', async function() {
+    console.log('Before saving the document');
+    this.content = this.content + ' - modified';
+});
 
 // model is for actual instance of the document
 const Tweet = mongoose.model('Tweet', tweetSchema);
