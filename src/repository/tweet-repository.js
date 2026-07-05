@@ -32,16 +32,6 @@ class TweetRepository {
         }
     }
 
-    async update (tweetId, data) {
-        try {
-            const tweet = await Tweet.findByIdAndUpdate(tweetId, data);
-            return tweet;
-        }
-        catch (error) {
-            console.log('Error in updating tweet', error);
-        }
-    }
-
     async populateComments (tweetId) {
         try {
             const tweet = await Tweet.findById(tweetId).populate({path: 'comments'}).lean(); // use path when you have nested documents. // lean to convert to normal js object.
