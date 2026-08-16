@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 // Schema is a blueprint for the data, it defines the structure of the document and the data types of each field
 const tweetSchema = new mongoose.Schema({
@@ -19,4 +19,4 @@ const tweetSchema = new mongoose.Schema({
 
 // model is for actual instance of the document
 const Tweet = mongoose.model('Tweet', tweetSchema);
-module.exports = Tweet;
+export default Tweet;

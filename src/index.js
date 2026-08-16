@@ -1,11 +1,9 @@
-const express = require('express');
-const connect = require('./config/database');
-const app = express();
+import { connect } from './config/database.js';
+import express from 'express';
+import TweetRepository from './repository/tweet-repository.js';
+import TweetService from './services/tweet-service.js';
 
-const TweetRepository = require('./repository/tweet-repository');
-const Comment = require('./models/comment');
-const Tweet = require('./models/tweet');
-const tweetRepo = new TweetRepository();
+const app = express();
 
 const PORT = process.env.PORT || 3000;
 
@@ -13,8 +11,9 @@ app.listen(PORT, async() => {
     console.log(`Server is running on port ${PORT}`);
     await connect();
     console.log('Connected to the database');
-    const tweets = await Tweet.findById({
-    content: ["First tweet", "Second tweet", "Third tweet", "2y654333"],
-   })
-   console.log(tweets);
+    let service = new TweetService();
+    const tweet = await service.create({
+        content: 'this is my first #tweet. I am so #excited #yo'
+    })
+
 });
