@@ -17,8 +17,7 @@ class TweetService {
 
         const content = data.content;
         let tags = content.match(/#[a-zA-Z0-9_]+/g)
-            .map((tag) => tag.substring(1))
-            .map(tag => tag.toLowerCase()); //this regex extracts all the hashtags and remove first char i.e. # from the tag and also convert the tags to lowercase.
+                          .map((tag) => tag.substring(1).toLowerCase()); //this regex extracts all the hashtags and remove first char i.e. # from the tag and also convert the tags to lowercase.
         const tweet = await this.tweetRepository.create(data);
         let alreadyPresentTags = await this.hashtagRepository.findByTitle(tags);
         let titleOfPresentTags = alreadyPresentTags.map((tag) => tag.title); // gives the list of tags which are already present in the db

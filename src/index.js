@@ -13,7 +13,7 @@ app.listen(PORT, async() => {
     console.log('Connected to the database');
     let service = new TweetService();
     const tweet = await service.create({
-        content: 'this is my first #tweet. I am so #excited #yo'
+        content: 'this is my first #tweet. I am so #excited #YO'
     })
 
 });
