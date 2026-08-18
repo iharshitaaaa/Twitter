@@ -15,9 +15,9 @@ const hashtagSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 // In hashtag we should create a hook which will ensure we only store lower case hashtags
-hashtagSchema.pre('save', function (next){
-    this.title = this.title.toLowerCase();
-    next();
-})
+hashtagSchema.pre('save', function () {
+  this.title = this.title.toLowerCase();
+});
+
 const Hashtag = mongoose.model('Hashtag', hashtagSchema);
 export default Hashtag;
