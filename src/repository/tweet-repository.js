@@ -1,6 +1,11 @@
 import Tweet from '../models/tweet.js';
+import CrudRepository from './crud-repository.js';
 
-class TweetRepository {
+class TweetRepository extends CrudRepository {
+
+    constructor() {
+        super(Tweet); // super is used to call the constructor of the parent class. Here we are passing the Tweet model to the CrudRepository constructor.
+    }
 
     async create(data){
         try {
@@ -12,25 +17,25 @@ class TweetRepository {
         }
     }
 
-    async get (id) {
-        try {
-            const tweet = await Tweet.findById(id);
-            return tweet;
-        }
-        catch (error) {
-            console.log('Error in fetching tweet', error);
-        }
-    }
+    // async get (id) {
+    //     try {
+    //         const tweet = await Tweet.findById(id);
+    //         return tweet;
+    //     }
+    //     catch (error) {
+    //         console.log('Error in fetching tweet', error);
+    //     }
+    // }
 
-    async delete (id) {
-        try {
-            const tweet = await Tweet.findByIdAndRemove(id);
-            return tweet;
-        }
-        catch (error) {
-            console.log('Error in deleting tweet', error);
-        }
-    }
+    // async delete (id) {
+    //     try {
+    //         const tweet = await Tweet.findByIdAndRemove(id);
+    //         return tweet;
+    //     }
+    //     catch (error) {
+    //         console.log('Error in deleting tweet', error);
+    //     }
+    // }
 
     async populateComments (tweetId) {
         try {
