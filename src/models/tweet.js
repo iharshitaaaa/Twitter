@@ -7,7 +7,13 @@ const tweetSchema = new mongoose.Schema({
         required: true, // only validation would be done on this
         max : [ 250, 'Tweet content should not be more than 250 characters',
         ]
-    }
+    },
+    likes: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Like'
+        }
+    ]
 }, { timestamps: true} // add createdAt and updatedAt fields
 );
 
