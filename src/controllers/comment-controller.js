@@ -5,7 +5,7 @@ const commentService = new CommentService();
 export const createComment = async (req, res) => {
     try {
         const comment = await commentService.createComment(
-            req.body.userId,
+            req.user.id, // now we would not be required to send user id in our request. While authnetication it will automatically assign the user id.
             req.query.modelType,
             req.query.modelId,
             req.body.content
