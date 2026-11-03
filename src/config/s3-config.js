@@ -23,7 +23,7 @@ const upload = multer({
             cb(null, { fieldName: file.fieldname });
         },
         key: function (req, file, cb) { //unique file name generation
-            cb(null, Date.now().toString() + '-' + file.originalname);
+            cb(null, Date.now().toString() + '-tweetimage');
         }
     })
 });
