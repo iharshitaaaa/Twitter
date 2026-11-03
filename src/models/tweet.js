@@ -19,11 +19,14 @@ const tweetSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Comment'
         }
-    ]
+    ], 
+    image: {
+        type: String,
+    }
 }, { timestamps: true} // add createdAt and updatedAt fields
 );
 
-//hashtags array is empty becuase we dont have an actual usecase to store the hashtags inside the tweet because we are not going to update the tweet anyway.
+//hashtags array is empty because we dont have an actual usecase to store the hashtags inside the tweet because we are not going to update the tweet anyway.
 
 // model is for actual instance of the document
 const Tweet = mongoose.model('Tweet', tweetSchema);

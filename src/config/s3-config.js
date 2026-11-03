@@ -14,11 +14,11 @@ aws.config.update({
 
 const s3 = new aws.S3();
 
-const upload = multer({ // multer configuration
-    storage: multerS3({ // multer-s3 storage configuration
+// This upload object will act as a middleware to handle file uploads to S3. It uses multer and multer-s3 to handle the file upload process.
+const upload = multer({ 
+    storage: multerS3({ 
         s3: s3, //s3 instance
         bucket: process.env.AWS_BUCKET_NAME, //s3 bucket name
-        acl: 'public-read', // access control list
         metadata: function (req, file, cb) { //metadata for the file
             cb(null, { fieldName: file.fieldname });
         },
